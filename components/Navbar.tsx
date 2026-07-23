@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { GithubIcon } from "./icons";
@@ -18,6 +19,7 @@ export function Navbar() {
   const [isOpen, setIsOpen] = React.useState(false);
   const [isScrolled, setIsScrolled] = React.useState(false);
   const { theme, setTheme } = useTheme();
+  const pathname = usePathname();
 
   React.useEffect(() => {
     const handleScroll = () => {
@@ -56,6 +58,14 @@ export function Navbar() {
         </nav>
 
         <div className="hidden md:flex items-center gap-4">
+          {pathname === "/report" && (
+            <Link
+              href="/"
+              className="px-4 py-1.5 bg-foreground text-background rounded-full font-medium text-sm transition-all hover:scale-105 active:scale-95 shadow-sm"
+            >
+              Analyze Another Repo
+            </Link>
+          )}
           <Link
             href="https://github.com"
             target="_blank"
