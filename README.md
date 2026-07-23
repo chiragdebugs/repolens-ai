@@ -34,11 +34,8 @@ The platform works by extracting a concise, optimized snapshot of the repository
 
 [Repository Health Dashboard Placeholder]
 
-## Demo
-
-https://repolens-ai.vercel.app
-
-*(Note: Replace the URL above with your actual deployment link)*
+## Live Demo:
+https://repolens-ai-coral.vercel.app/
 
 ## Technology Stack
 
@@ -104,7 +101,7 @@ The GitHub integration layer uses the official Octokit SDK to interface with the
 
 ### Clone repository
 ```bash
-git clone https://github.com/yourusername/repolens-ai.git
+git clone https://github.com/chiragdebugs/repolens-ai.git
 cd repolens-ai
 ```
 
