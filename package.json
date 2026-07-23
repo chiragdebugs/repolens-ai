@@ -12,6 +12,7 @@
     "@google/genai": "^2.13.0",
     "@octokit/rest": "^22.0.1",
     "@tailwindcss/typography": "^0.5.20",
+    "@vercel/kv": "^3.0.0",
     "clsx": "^2.1.1",
     "framer-motion": "^12.42.2",
     "lucide-react": "^1.26.0",
