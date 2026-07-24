@@ -1,8 +1,9 @@
-import { Download, FileText, FileJson } from "lucide-react";
+import { Download, FileText, FileJson, Link as LinkIcon } from "lucide-react";
 import { ReportContent, RepoInfo } from "@/lib/types";
+import { toast } from "sonner";
 
 interface ExportMenuProps {
-  data: { report: ReportContent; info: RepoInfo };
+  data: { id?: string; report: ReportContent; info: RepoInfo };
 }
 
 export function ExportMenu({ data }: ExportMenuProps) {
@@ -30,8 +31,25 @@ export function ExportMenu({ data }: ExportMenuProps) {
     window.print();
   };
 
+  const handleShare = () => {
+    const url = data.id 
+      ? `${window.location.origin}/report/${data.id}` 
+      : window.location.href;
+    
+    navigator.clipboard.writeText(url);
+    toast.success("Link copied to clipboard!");
+  };
+
   return (
     <div className="flex gap-2">
+      <button
+        onClick={handleShare}
+        className="p-2 rounded-lg bg-foreground text-background transition-all hover:scale-105 active:scale-95 shadow-sm flex items-center gap-2 text-xs font-medium print:hidden"
+        title="Share Report"
+      >
+        <LinkIcon className="w-4 h-4" />
+        <span className="hidden sm:inline">Share</span>
+      </button>
       <button
         onClick={handleDownloadMarkdown}
         className="p-2 rounded-lg hover:bg-muted transition-colors border border-border flex items-center gap-2 text-xs font-medium"

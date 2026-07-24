@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { parseGithubUrl, fetchRepoData } from "@/lib/github";
 import { generatePrompt } from "@/lib/parser";
 import { generateArchitectureReport } from "@/lib/gemini";
-import { kv } from "@vercel/kv";
+import { getCachedReportId, saveReport, generateShortId } from "@/lib/db";
 
 export const maxDuration = 60; // Allow Vercel functions to run for 60 seconds
 
@@ -21,19 +21,11 @@ export async function POST(req: Request) {
 
     const { owner, repo } = parsed;
 
-    const cacheKey = `repolens:analysis:${owner}:${repo}`;
-    const isKVSettingsAvailable = !!process.env.KV_REST_API_URL && !!process.env.KV_REST_API_TOKEN;
-
-    if (isKVSettingsAvailable) {
-      try {
-        const cachedData = await kv.get(cacheKey);
-        if (cachedData) {
-          console.log(`[Cache Hit] Serving ${owner}/${repo} from Vercel KV`);
-          return NextResponse.json(cachedData);
-        }
-      } catch (err) {
-        console.warn("Failed to read from Vercel KV cache:", err);
-      }
+    const cachedId = await getCachedReportId(owner, repo);
+    
+    if (cachedId) {
+      console.log(`[Cache Hit] Serving ${owner}/${repo} from Vercel KV`);
+      return NextResponse.json({ id: cachedId });
     }
 
     console.log(`[Cache Miss] Fetching ${owner}/${repo} from GitHub and analyzing with Gemini...`);
@@ -47,21 +39,22 @@ export async function POST(req: Request) {
     // Call Gemini
     const report = await generateArchitectureReport(prompt);
 
-    const result = {
+    const newId = generateShortId();
+
+    const saved = await saveReport(newId, owner, repo, {
       info: repoData.info,
       report,
-    };
+    });
 
-    if (isKVSettingsAvailable) {
-      try {
-        // Cache for 7 days (604800 seconds)
-        await kv.set(cacheKey, result, { ex: 604800 });
-      } catch (err) {
-        console.warn("Failed to write to Vercel KV cache:", err);
-      }
+    if (saved) {
+      return NextResponse.json({ id: newId });
+    } else {
+      // Fallback: If DB is not available, just return the data so it renders locally without redirect
+      return NextResponse.json({
+        info: repoData.info,
+        report,
+      });
     }
-
-    return NextResponse.json(result);
   } catch (error: any) {
     console.error("Analysis API Error:", error);
     
