@@ -9,7 +9,14 @@ const MAX_RETRIES = 3;
 const RETRY_DELAY_MS = 2000;
 
 export async function generateArchitectureReport(prompt: string, attempt = 1): Promise<ReportContent> {
-  const modelName = process.env.GEMINI_MODEL || "gemini-2.5-flash";
+  const modelsToTry = [
+    process.env.GEMINI_MODEL,
+    "gemini-2.0-flash",
+    "gemini-1.5-flash",
+  ].filter(Boolean) as string[];
+
+  // Fallback to next model if attempt > 1
+  const modelName = modelsToTry[(attempt - 1) % modelsToTry.length];
   
   try {
     const controller = new AbortController();

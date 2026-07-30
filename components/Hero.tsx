@@ -6,7 +6,7 @@ import { HeroRibbons } from "./HeroRibbons";
 
 export function Hero() {
   return (
-    <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden min-h-[90vh] flex items-center bg-[#090B10]">
+    <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden min-h-[90vh] flex items-center bg-background">
       {/* Background Animated Ribbons & Lighting */}
       <HeroRibbons />
 
@@ -19,7 +19,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-[#11161F]/90 border border-white/10 text-xs font-medium text-[#A5B0C5] mx-auto lg:mx-0 w-fit mb-6 shadow-sm backdrop-blur-md"
+              className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-card/90 border border-border text-xs font-medium text-muted-foreground mx-auto lg:mx-0 w-fit mb-6 shadow-sm backdrop-blur-md"
             >
               <span className="flex h-2 w-2 rounded-full bg-[#2FBF8F] shadow-[0_0_8px_rgba(47,191,143,0.6)]" />
               Gemini 2.5 Flash Engine
@@ -29,10 +29,10 @@ export function Hero() {
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1] mb-6 text-[#F8FAFC]"
+              className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1] mb-6 text-foreground"
             >
               Understand Any <br className="hidden md:block" />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#2FBF8F] via-[#5B8CFF] to-[#F8FAFC]">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#2FBF8F] via-[#5B8CFF] to-foreground">
                 GitHub Repository
               </span>{" "}
               <br className="hidden md:block" />
@@ -43,7 +43,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-lg md:text-xl text-[#A5B0C5] mb-10 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-normal"
+              className="text-lg md:text-xl text-muted-foreground mb-10 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-normal"
             >
               Paste any public GitHub repository URL and instantly receive an AI-generated architecture report. Perfect for onboarding, code reviews, and exploring new projects.
             </motion.p>
@@ -54,7 +54,7 @@ export function Hero() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.6 }}
-              className="text-xs text-[#A5B0C5]/70 mt-4"
+              className="text-xs text-muted-foreground/70 mt-4"
             >
               * Analyzes READMEs, configs, and folder structures. Does not clone source code.
             </motion.p>
@@ -72,28 +72,28 @@ export function Hero() {
               <div className="absolute inset-0 rounded-3xl bg-gradient-to-tr from-[#2FBF8F]/10 to-[#5B8CFF]/10 blur-2xl opacity-60" />
               
               {/* Floating Graph & Code Card */}
-              <div className="absolute inset-6 bg-[#11161F]/90 backdrop-blur-xl rounded-2xl border border-white/10 shadow-2xl flex flex-col p-6 overflow-hidden transform -rotate-3 transition-transform hover:rotate-0 duration-500">
-                <div className="flex items-center justify-between mb-5 pb-3 border-b border-white/5">
+              <div className="absolute inset-6 bg-card/90 backdrop-blur-xl rounded-2xl border border-border shadow-2xl flex flex-col p-6 overflow-hidden transform -rotate-3 transition-transform hover:rotate-0 duration-500">
+                <div className="flex items-center justify-between mb-5 pb-3 border-b border-border/50">
                   <div className="flex gap-2">
-                    <div className="w-3 h-3 rounded-full bg-[#1E2638]" />
-                    <div className="w-3 h-3 rounded-full bg-[#1E2638]" />
-                    <div className="w-3 h-3 rounded-full bg-[#1E2638]" />
+                    <div className="w-3 h-3 rounded-full bg-muted" />
+                    <div className="w-3 h-3 rounded-full bg-muted" />
+                    <div className="w-3 h-3 rounded-full bg-muted" />
                   </div>
-                  <span className="text-[11px] font-mono text-[#A5B0C5]/60">architecture.json</span>
+                  <span className="text-[11px] font-mono text-muted-foreground/60">architecture.json</span>
                 </div>
                 
-                <div className="space-y-3.5 flex-1 font-mono text-xs text-[#A5B0C5]/80">
+                <div className="space-y-3.5 flex-1 font-mono text-xs text-muted-foreground">
                   <div className="flex items-center justify-between">
                     <span className="text-[#2FBF8F]">● repo: &quot;facebook/react&quot;</span>
                     <span className="text-[10px] px-2 py-0.5 rounded bg-[#2FBF8F]/10 text-[#2FBF8F] border border-[#2FBF8F]/20">Verified</span>
                   </div>
-                  <div className="h-2 w-3/4 rounded bg-[#171D28]" />
-                  <div className="h-2 w-1/2 rounded bg-[#171D28]" />
+                  <div className="h-2 w-3/4 rounded bg-muted" />
+                  <div className="h-2 w-1/2 rounded bg-muted" />
                   
-                  <div className="p-3 rounded-lg bg-[#090B10]/80 border border-white/5 space-y-2 mt-2">
+                  <div className="p-3 rounded-lg bg-muted/60 border border-border/40 space-y-2 mt-2">
                     <div className="flex items-center justify-between text-[11px]">
                       <span className="text-[#5B8CFF]">tech_stack:</span>
-                      <span className="text-[#F8FAFC]">[&quot;TypeScript&quot;, &quot;C++&quot;]</span>
+                      <span className="text-foreground">[&quot;TypeScript&quot;, &quot;C++&quot;]</span>
                     </div>
                     <div className="flex items-center justify-between text-[11px]">
                       <span className="text-[#5B8CFF]">health_score:</span>
@@ -101,8 +101,8 @@ export function Hero() {
                     </div>
                   </div>
 
-                  <div className="h-2 w-5/6 rounded bg-[#171D28]" />
-                  <div className="h-2 w-2/3 rounded bg-[#171D28]" />
+                  <div className="h-2 w-5/6 rounded bg-muted" />
+                  <div className="h-2 w-2/3 rounded bg-muted" />
                 </div>
               </div>
 
@@ -110,7 +110,7 @@ export function Hero() {
               <motion.div 
                 animate={{ y: [-6, 6, -6] }}
                 transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -right-4 top-16 bg-[#171D28]/95 backdrop-blur-md p-3.5 rounded-xl shadow-xl border border-white/10 flex items-center gap-3"
+                className="absolute -right-4 top-16 bg-card/95 backdrop-blur-md p-3.5 rounded-xl shadow-xl border border-border flex items-center gap-3"
               >
                 <div className="w-10 h-10 rounded-lg bg-[#2FBF8F]/10 border border-[#2FBF8F]/20 flex items-center justify-center text-[#2FBF8F]">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
@@ -119,8 +119,8 @@ export function Hero() {
                   </svg>
                 </div>
                 <div>
-                  <div className="text-xs font-semibold text-[#F8FAFC]">AST Parsed</div>
-                  <div className="text-[10px] text-[#A5B0C5]">1,000+ files mapped</div>
+                  <div className="text-xs font-semibold text-foreground">AST Parsed</div>
+                  <div className="text-[10px] text-muted-foreground">1,000+ files mapped</div>
                 </div>
               </motion.div>
             </motion.div>

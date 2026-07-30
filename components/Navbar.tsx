@@ -4,7 +4,7 @@ import * as React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Sun, Moon } from "lucide-react";
 import { GithubIcon } from "./icons";
 import { useTheme } from "next-themes";
 import { cn } from "@/lib/utils";
@@ -18,6 +18,11 @@ const NAV_LINKS = [
 export function Navbar() {
   const [isOpen, setIsOpen] = React.useState(false);
   const [isScrolled, setIsScrolled] = React.useState(false);
+  const mounted = React.useSyncExternalStore(
+    () => () => {},
+    () => true,
+    () => false
+  );
   const { theme, setTheme } = useTheme();
   const pathname = usePathname();
 
@@ -38,10 +43,10 @@ export function Navbar() {
     >
       <div className="container mx-auto px-4 md:px-8 max-w-7xl flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2.5 group">
-          <div className="w-8 h-8 rounded-lg bg-[#171D28] border border-[#2FBF8F]/40 flex items-center justify-center text-[#2FBF8F] font-bold text-base transition-all duration-200 group-hover:border-[#2FBF8F]/70 shadow-sm">
+          <div className="w-8 h-8 rounded-lg bg-card border border-[#2FBF8F]/40 flex items-center justify-center text-[#2FBF8F] font-bold text-base transition-all duration-200 group-hover:border-[#2FBF8F]/70 shadow-sm">
             R
           </div>
-          <span className="font-bold text-xl tracking-tight text-[#F8FAFC]">RepoLens AI</span>
+          <span className="font-bold text-xl tracking-tight text-foreground">RepoLens AI</span>
         </Link>
 
         {/* Desktop Nav */}
@@ -76,11 +81,14 @@ export function Navbar() {
           </Link>
           <button
             onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-            className="w-9 h-9 rounded-full flex items-center justify-center hover:bg-muted transition-colors"
+            className="w-9 h-9 rounded-full flex items-center justify-center hover:bg-muted transition-colors border border-border text-muted-foreground hover:text-foreground"
             aria-label="Toggle theme"
           >
-            {/* Simple dot or text for theme, but Lucide Moon/Sun isn't imported. I'll just use a small circle for now to represent theme toggle */}
-            <div className="w-4 h-4 rounded-full bg-foreground" />
+            {mounted && theme === "dark" ? (
+              <Sun className="w-4 h-4 text-[#2FBF8F]" />
+            ) : (
+              <Moon className="w-4 h-4 text-[#5B8CFF]" />
+            )}
           </button>
         </div>
 

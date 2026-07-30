@@ -22,17 +22,17 @@
 }
 
 :root {
-  --background: #090b10;
-  --foreground: #f8fafc;
-  --border: rgba(255, 255, 255, 0.08);
+  --background: #f8fafc;
+  --foreground: #090b10;
+  --border: #e2e8f0;
   --primary: #2fbf8f;
-  --primary-foreground: #090b10;
+  --primary-foreground: #ffffff;
   --secondary: #5b8cff;
-  --secondary-foreground: #f8fafc;
-  --muted: #11161f;
-  --muted-foreground: #a5b0c5;
-  --card: #11161f;
-  --card-foreground: #f8fafc;
+  --secondary-foreground: #ffffff;
+  --muted: #f1f5f9;
+  --muted-foreground: #64748b;
+  --card: #ffffff;
+  --card-foreground: #090b10;
   --radius: 0.75rem;
 }
 
@@ -58,20 +58,20 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Sophisticated Graphite Background */
+/* Sophisticated Background */
 .aurora-gradient {
-  background: radial-gradient(circle at 80% 20%, rgba(47, 191, 143, 0.05), transparent 40%),
-              radial-gradient(circle at 20% 80%, rgba(91, 140, 255, 0.04), transparent 40%),
-              #090b10;
+  background: radial-gradient(circle at 80% 20%, rgba(47, 191, 143, 0.06), transparent 40%),
+              radial-gradient(circle at 20% 80%, rgba(91, 140, 255, 0.05), transparent 40%),
+              var(--background);
   background-attachment: fixed;
 }
 
 /* Refined Enterprise Glassmorphism */
 .glass {
-  background: rgba(17, 22, 31, 0.65);
+  background: rgba(255, 255, 255, 0.75);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 .dark .glass {
