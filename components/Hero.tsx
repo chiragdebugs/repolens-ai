@@ -60,69 +60,136 @@ export function Hero() {
             </motion.p>
           </div>
 
-          {/* Right Column: Refined Enterprise Preview */}
-          <div className="relative hidden lg:flex justify-center items-center h-[500px]">
+          {/* Right Column: Realistic Enterprise AI Repository Analysis Dashboard */}
+          <div className="relative hidden lg:flex justify-center items-center min-h-[520px]">
             <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0, scale: 0.94, y: 10 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
-              className="relative w-full max-w-md aspect-square"
+              className="relative w-full max-w-lg perspective-[1200px]"
             >
-              {/* Subtle ambient glow behind card */}
-              <div className="absolute inset-0 rounded-3xl bg-gradient-to-tr from-[#2FBF8F]/10 to-[#5B8CFF]/10 blur-2xl opacity-60" />
-              
-              {/* Floating Graph & Code Card */}
-              <div className="absolute inset-6 bg-card/90 backdrop-blur-xl rounded-2xl border border-border shadow-2xl flex flex-col p-6 overflow-hidden transform -rotate-3 transition-transform hover:rotate-0 duration-500">
-                <div className="flex items-center justify-between mb-5 pb-3 border-b border-border/50">
-                  <div className="flex gap-2">
-                    <div className="w-3 h-3 rounded-full bg-muted" />
-                    <div className="w-3 h-3 rounded-full bg-muted" />
-                    <div className="w-3 h-3 rounded-full bg-muted" />
-                  </div>
-                  <span className="text-[11px] font-mono text-muted-foreground/60">architecture.json</span>
-                </div>
+              {/* Subtle ambient volumetric lighting field behind mockup */}
+              <div className="absolute -inset-4 rounded-[2.5rem] bg-gradient-to-tr from-[#2FBF8F]/15 via-[#5B8CFF]/10 to-transparent blur-3xl opacity-70 pointer-events-none" />
+
+              {/* Main Realistic AI Product Dashboard Card */}
+              <div className="relative bg-card/95 backdrop-blur-2xl rounded-2xl border border-border shadow-[0_25px_60px_-15px_rgba(0,0,0,0.3)] p-5 transform rotate-y-[-5deg] rotate-x-[3deg] hover:rotate-0 transition-transform duration-700 ease-out flex flex-col gap-4 overflow-hidden">
                 
-                <div className="space-y-3.5 flex-1 font-mono text-xs text-muted-foreground">
-                  <div className="flex items-center justify-between">
-                    <span className="text-[#2FBF8F]">● repo: &quot;facebook/react&quot;</span>
-                    <span className="text-[10px] px-2 py-0.5 rounded bg-[#2FBF8F]/10 text-[#2FBF8F] border border-[#2FBF8F]/20">Verified</span>
+                {/* Header Window Bar */}
+                <div className="flex items-center justify-between pb-3.5 border-b border-border/60">
+                  <div className="flex items-center gap-3">
+                    <div className="flex gap-1.5">
+                      <div className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
+                      <div className="w-2.5 h-2.5 rounded-full bg-amber-500/80" />
+                      <div className="w-2.5 h-2.5 rounded-full bg-green-500/80" />
+                    </div>
+                    <div className="flex items-center gap-2 px-2.5 py-0.5 rounded-md bg-muted/80 border border-border/50 text-[11px] font-mono text-muted-foreground">
+                      <span className="text-[#2FBF8F]">facebook</span> / <span className="text-foreground font-semibold">react</span>
+                    </div>
                   </div>
-                  <div className="h-2 w-3/4 rounded bg-muted" />
-                  <div className="h-2 w-1/2 rounded bg-muted" />
-                  
-                  <div className="p-3 rounded-lg bg-muted/60 border border-border/40 space-y-2 mt-2">
-                    <div className="flex items-center justify-between text-[11px]">
-                      <span className="text-[#5B8CFF]">tech_stack:</span>
-                      <span className="text-foreground">[&quot;TypeScript&quot;, &quot;C++&quot;]</span>
+                  <div className="flex items-center gap-2">
+                    <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-[#2FBF8F]/10 text-[#2FBF8F] border border-[#2FBF8F]/25 flex items-center gap-1.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#2FBF8F] animate-pulse" />
+                      AI Analysis Complete
+                    </span>
+                  </div>
+                </div>
+
+                {/* Key Metrics Dashboard Grid */}
+                <div className="grid grid-cols-3 gap-2.5">
+                  <div className="p-2.5 rounded-xl bg-muted/50 border border-border/50 flex flex-col gap-0.5">
+                    <span className="text-[10px] text-muted-foreground font-medium">Health Score</span>
+                    <div className="flex items-baseline gap-1">
+                      <span className="text-base font-bold text-[#2FBF8F]">98</span>
+                      <span className="text-[10px] text-muted-foreground">/100</span>
                     </div>
-                    <div className="flex items-center justify-between text-[11px]">
-                      <span className="text-[#5B8CFF]">health_score:</span>
-                      <span className="text-[#2FBF8F]">98/100</span>
-                    </div>
+                  </div>
+                  <div className="p-2.5 rounded-xl bg-muted/50 border border-border/50 flex flex-col gap-0.5">
+                    <span className="text-[10px] text-muted-foreground font-medium">Complexity</span>
+                    <span className="text-xs font-bold text-[#5B8CFF]">Enterprise</span>
+                  </div>
+                  <div className="p-2.5 rounded-xl bg-muted/50 border border-border/50 flex flex-col gap-0.5">
+                    <span className="text-[10px] text-muted-foreground font-medium">Dependencies</span>
+                    <span className="text-xs font-bold text-foreground">42 modules</span>
+                  </div>
+                </div>
+
+                {/* Architecture Relationship Graph (SVG Node Diagram) */}
+                <div className="p-3.5 rounded-xl bg-muted/30 border border-border/50 relative overflow-hidden flex flex-col gap-2">
+                  <div className="flex items-center justify-between text-[11px] font-mono font-medium text-muted-foreground mb-1">
+                    <span>Architecture Diagram</span>
+                    <span className="text-[10px] text-[#2FBF8F]">AST Engine v2</span>
                   </div>
 
-                  <div className="h-2 w-5/6 rounded bg-muted" />
-                  <div className="h-2 w-2/3 rounded bg-muted" />
+                  {/* Micro SVG Architecture Graph */}
+                  <div className="relative h-28 w-full bg-background/50 rounded-lg border border-border/40 p-2 flex items-center justify-center">
+                    <svg viewBox="0 0 380 100" className="w-full h-full" fill="none">
+                      {/* Connection Lines */}
+                      <path d="M 60,50 L 140,25 M 60,50 L 140,75 M 140,25 L 240,50 M 140,75 L 240,50 M 240,50 L 320,50" stroke="#5B8CFF" strokeWidth="1.5" strokeDasharray="3 3" strokeOpacity="0.6" />
+                      
+                      {/* Live Data Pulse Animation */}
+                      <circle r="2.5" fill="#2FBF8F">
+                        <animateMotion path="M 60,50 L 140,25 L 240,50 L 320,50" dur="4s" repeatCount="indefinite" />
+                      </circle>
+
+                      {/* Nodes */}
+                      <g transform="translate(30, 35)">
+                        <rect width="60" height="30" rx="6" fill="#171D28" stroke="#2FBF8F" strokeWidth="1" />
+                        <text x="30" y="19" textAnchor="middle" fill="#F8FAFC" fontSize="10" fontFamily="monospace">react</text>
+                      </g>
+
+                      <g transform="translate(130, 10)">
+                        <rect width="85" height="30" rx="6" fill="#171D28" stroke="#5B8CFF" strokeWidth="1" />
+                        <text x="42.5" y="19" textAnchor="middle" fill="#A5B0C5" fontSize="9" fontFamily="monospace">reconciler</text>
+                      </g>
+
+                      <g transform="translate(130, 60)">
+                        <rect width="85" height="30" rx="6" fill="#171D28" stroke="#5B8CFF" strokeWidth="1" />
+                        <text x="42.5" y="19" textAnchor="middle" fill="#A5B0C5" fontSize="9" fontFamily="monospace">scheduler</text>
+                      </g>
+
+                      <g transform="translate(260, 35)">
+                        <rect width="80" height="30" rx="6" fill="#171D28" stroke="#2FBF8F" strokeWidth="1" />
+                        <text x="40" y="19" textAnchor="middle" fill="#2FBF8F" fontSize="10" fontFamily="monospace">react-dom</text>
+                      </g>
+                    </svg>
+                  </div>
+                </div>
+
+                {/* AI Summary Snippet */}
+                <div className="p-3 rounded-xl bg-muted/40 border border-border/40 font-mono text-[11px] text-muted-foreground leading-relaxed">
+                  <span className="text-[#2FBF8F] font-semibold">AI Insight: </span>
+                  Fiber architecture with concurrent rendering engine mapped across 1,240 core modules.
                 </div>
               </div>
 
-              {/* Floating Code Badge Accent */}
+              {/* Floating Foreground Badge 1: AST Parsed Accent */}
               <motion.div 
-                animate={{ y: [-6, 6, -6] }}
-                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -right-4 top-16 bg-card/95 backdrop-blur-md p-3.5 rounded-xl shadow-xl border border-border flex items-center gap-3"
+                animate={{ y: [-5, 5, -5] }}
+                transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute -right-5 top-12 bg-card/95 backdrop-blur-xl p-3 rounded-xl shadow-2xl border border-border flex items-center gap-3"
               >
-                <div className="w-10 h-10 rounded-lg bg-[#2FBF8F]/10 border border-[#2FBF8F]/20 flex items-center justify-center text-[#2FBF8F]">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
+                <div className="w-9 h-9 rounded-lg bg-[#2FBF8F]/10 border border-[#2FBF8F]/25 flex items-center justify-center text-[#2FBF8F]">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
                     <polyline points="16 18 22 12 16 6" />
                     <polyline points="8 6 2 12 8 18" />
                   </svg>
                 </div>
                 <div>
-                  <div className="text-xs font-semibold text-foreground">AST Parsed</div>
-                  <div className="text-[10px] text-muted-foreground">1,000+ files mapped</div>
+                  <div className="text-xs font-semibold text-foreground">1,240 Modules</div>
+                  <div className="text-[10px] text-muted-foreground font-mono">AST Tree Verified</div>
                 </div>
               </motion.div>
+
+              {/* Floating Foreground Badge 2: Security & License Status */}
+              <motion.div 
+                animate={{ y: [5, -5, 5] }}
+                transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute -left-6 bottom-8 bg-card/95 backdrop-blur-xl px-3.5 py-2.5 rounded-xl shadow-2xl border border-border flex items-center gap-2.5"
+              >
+                <div className="w-2 h-2 rounded-full bg-[#5B8CFF] animate-ping" />
+                <span className="text-xs font-mono font-medium text-foreground">MIT Licensed ● Secure</span>
+              </motion.div>
+
             </motion.div>
           </div>
         </div>
