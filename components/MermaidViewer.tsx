@@ -9,12 +9,12 @@ mermaid.initialize({
   theme: "base",
   themeVariables: {
     fontFamily: "var(--font-sans)",
-    primaryColor: "#6366f1", // indigo-500
-    primaryTextColor: "#ffffff",
-    primaryBorderColor: "#4f46e5",
-    lineColor: "#6366f1",
-    secondaryColor: "#1e1e2e",
-    tertiaryColor: "#181825",
+    primaryColor: "#2FBF8F",
+    primaryTextColor: "#090B10",
+    primaryBorderColor: "#28A97E",
+    lineColor: "#2FBF8F",
+    secondaryColor: "#11161F",
+    tertiaryColor: "#171D28",
   },
   securityLevel: "loose",
 });

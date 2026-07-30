@@ -5,32 +5,32 @@ import { BrainCircuit, FastForward, FileCode2, FolderTree, ShieldCheck, Sparkles
 
 const FEATURES = [
   {
-    icon: <FastForward className="w-6 h-6 text-indigo-500" />,
+    icon: <FastForward className="w-5 h-5 text-[#2FBF8F]" />,
     title: "Instant Understanding",
     description: "Get a comprehensive architecture report in seconds without manually reading thousands of lines of code.",
   },
   {
-    icon: <FolderTree className="w-6 h-6 text-pink-500" />,
+    icon: <FolderTree className="w-5 h-5 text-[#5B8CFF]" />,
     title: "Architecture Extraction",
     description: "Automatically maps folder structures and dependencies to explain the core design patterns of the repo.",
   },
   {
-    icon: <BrainCircuit className="w-6 h-6 text-purple-500" />,
+    icon: <BrainCircuit className="w-5 h-5 text-[#2FBF8F]" />,
     title: "Powered by Gemini",
     description: "Utilizes Google's Gemini 2.5 Flash to provide deep contextual insights and high-quality summaries.",
   },
   {
-    icon: <FileCode2 className="w-6 h-6 text-blue-500" />,
+    icon: <FileCode2 className="w-5 h-5 text-[#5B8CFF]" />,
     title: "Smart File Selection",
     description: "Only parses essential configuration files and READMEs to respect privacy and API rate limits.",
   },
   {
-    icon: <ShieldCheck className="w-6 h-6 text-green-500" />,
+    icon: <ShieldCheck className="w-5 h-5 text-[#2FBF8F]" />,
     title: "Secure & Private",
     description: "Your data is never stored. We analyze the public repository metadata on-the-fly and discard it.",
   },
   {
-    icon: <Sparkles className="w-6 h-6 text-amber-500" />,
+    icon: <Sparkles className="w-5 h-5 text-[#5B8CFF]" />,
     title: "Beautiful Markdown",
     description: "Export beautifully formatted Markdown reports with one click, perfect for documentation and sharing.",
   },

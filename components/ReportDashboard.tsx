@@ -90,13 +90,13 @@ export function ReportDashboard({ data }: { data: { info: RepoInfo; report: Repo
       <div className="grid lg:grid-cols-2 gap-6">
         <motion.div variants={item} className="glass rounded-2xl p-6 border border-border/50 shadow-sm print:break-inside-avoid">
           <h3 className="text-lg font-semibold mb-6 flex items-center gap-2">
-            <Lightbulb className="w-5 h-5 text-amber-500" />
+            <Lightbulb className="w-5 h-5 text-[#2FBF8F]" />
             Suggested Improvements
           </h3>
           <ul className="space-y-3">
             {data.report.improvements?.map((imp: string, i: number) => (
               <li key={i} className="flex gap-3 text-sm">
-                <span className="w-1.5 h-1.5 rounded-full bg-amber-500 shrink-0 mt-1.5" />
+                <span className="w-1.5 h-1.5 rounded-full bg-[#2FBF8F] shrink-0 mt-1.5" />
                 <span>{imp}</span>
               </li>
             ))}

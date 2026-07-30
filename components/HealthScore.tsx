@@ -5,9 +5,9 @@ import { Activity, ShieldCheck, AlertTriangle } from "lucide-react";
 
 export function HealthScore({ score }: { score: number }) {
   // Determine color and icon based on score
-  let color = "text-green-500";
-  let bgLight = "bg-green-500/10";
-  let borderColor = "border-green-500/20";
+  let color = "text-[#2FBF8F]";
+  let bgLight = "bg-[#2FBF8F]/10";
+  let borderColor = "border-[#2FBF8F]/20";
   let Icon = ShieldCheck;
   let status = "Excellent";
 

@@ -5,17 +5,17 @@ import { Search, Cpu, FileOutput } from "lucide-react";
 
 const STEPS = [
   {
-    icon: <Search className="w-8 h-8 text-indigo-500" />,
+    icon: <Search className="w-7 h-7 text-[#2FBF8F]" />,
     title: "1. Paste URL",
     description: "Provide any public GitHub repository link. Our system instantly validates the URL and prepares for analysis.",
   },
   {
-    icon: <Cpu className="w-8 h-8 text-purple-500" />,
+    icon: <Cpu className="w-7 h-7 text-[#5B8CFF]" />,
     title: "2. AI Analysis",
     description: "We fetch key configuration files and repository metadata, sending a highly optimized prompt to Gemini.",
   },
   {
-    icon: <FileOutput className="w-8 h-8 text-pink-500" />,
+    icon: <FileOutput className="w-7 h-7 text-[#2FBF8F]" />,
     title: "3. Get Report",
     description: "Receive a structured, beautiful Markdown architecture report outlining the tech stack, folders, and key files.",
   },
@@ -23,7 +23,7 @@ const STEPS = [
 
 export function HowItWorks() {
   return (
-    <section id="how-it-works" className="py-24 bg-muted/30">
+    <section id="how-it-works" className="py-24 bg-[#090B10]">
       <div className="container mx-auto px-4 max-w-7xl">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-6">
@@ -36,7 +36,7 @@ export function HowItWorks() {
 
         <div className="grid md:grid-cols-3 gap-8 relative">
           {/* Connector Line */}
-          <div className="hidden md:block absolute top-12 left-[15%] right-[15%] h-0.5 bg-gradient-to-r from-indigo-500/20 via-purple-500/20 to-pink-500/20" />
+          <div className="hidden md:block absolute top-12 left-[15%] right-[15%] h-0.5 bg-gradient-to-r from-[#2FBF8F]/20 via-[#5B8CFF]/20 to-[#2FBF8F]/20" />
 
           {STEPS.map((step, idx) => (
             <motion.div

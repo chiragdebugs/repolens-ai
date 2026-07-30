@@ -6,7 +6,7 @@ export function LearningPath({ path }: { path: { path: string; reason: string }[
   return (
     <div className="glass rounded-2xl p-6 border border-border/50 shadow-sm h-full">
       <h3 className="text-lg font-semibold mb-6 flex items-center gap-2">
-        <Map className="w-5 h-5 text-indigo-500" />
+        <Map className="w-5 h-5 text-[#2FBF8F]" />
         Learning Path
       </h3>
       <div className="space-y-4 relative">
@@ -14,7 +14,7 @@ export function LearningPath({ path }: { path: { path: string; reason: string }[
         
         {path.map((step, index) => (
           <div key={step.path} className="relative pl-8 flex flex-col gap-1">
-            <div className="absolute left-0 top-1 w-6 h-6 rounded-full bg-indigo-500/10 border border-indigo-500/30 flex items-center justify-center text-[10px] font-bold text-indigo-500">
+            <div className="absolute left-0 top-1 w-6 h-6 rounded-full bg-[#2FBF8F]/10 border border-[#2FBF8F]/30 flex items-center justify-center text-[10px] font-bold text-[#2FBF8F]">
               {index + 1}
             </div>
             <h4 className="font-mono text-sm font-semibold">{step.path}</h4>

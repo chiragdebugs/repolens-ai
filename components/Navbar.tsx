@@ -37,11 +37,11 @@ export function Navbar() {
       )}
     >
       <div className="container mx-auto px-4 md:px-8 max-w-7xl flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-2 group">
-          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-500 to-pink-500 flex items-center justify-center text-white font-bold text-lg group-hover:scale-105 transition-transform shadow-lg shadow-indigo-500/20">
+        <Link href="/" className="flex items-center gap-2.5 group">
+          <div className="w-8 h-8 rounded-lg bg-[#171D28] border border-[#2FBF8F]/40 flex items-center justify-center text-[#2FBF8F] font-bold text-base transition-all duration-200 group-hover:border-[#2FBF8F]/70 shadow-sm">
             R
           </div>
-          <span className="font-bold text-xl tracking-tight">RepoLens AI</span>
+          <span className="font-bold text-xl tracking-tight text-[#F8FAFC]">RepoLens AI</span>
         </Link>
 
         {/* Desktop Nav */}

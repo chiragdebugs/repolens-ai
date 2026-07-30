@@ -17,11 +17,11 @@ function timeAgo(dateString: string) {
 export function RepoCard({ info }: { info: RepoInfo }) {
   return (
     <div className="glass rounded-2xl p-8 border border-border/50 shadow-sm relative overflow-hidden h-full">
-      <div className="absolute top-0 right-0 w-64 h-64 bg-indigo-500/10 rounded-full blur-3xl -mr-32 -mt-32 pointer-events-none" />
+      <div className="absolute top-0 right-0 w-64 h-64 bg-[#2FBF8F]/5 rounded-full blur-3xl -mr-32 -mt-32 pointer-events-none" />
       
       <div className="mb-6">
         <h2 className="text-3xl font-bold mb-2 truncate">
-          {info.owner} / <span className="text-indigo-500">{info.repo}</span>
+          {info.owner} / <span className="text-[#2FBF8F]">{info.repo}</span>
         </h2>
         <p className="text-muted-foreground text-sm max-w-2xl leading-relaxed">
           {info.description || "No description provided."}
@@ -49,13 +49,13 @@ export function RepoCard({ info }: { info: RepoInfo }) {
         {info.language && (
           <div className="flex flex-col gap-1 p-3 bg-background/50 rounded-xl border border-border/50">
             <span className="text-muted-foreground text-xs flex items-center gap-1.5"><Code2 className="w-3.5 h-3.5" /> Language</span>
-            <span className="text-lg text-blue-500">{info.language}</span>
+            <span className="text-lg text-[#5B8CFF]">{info.language}</span>
           </div>
         )}
         {info.license && (
           <div className="flex flex-col gap-1 p-3 bg-background/50 rounded-xl border border-border/50">
             <span className="text-muted-foreground text-xs flex items-center gap-1.5"><Scale className="w-3.5 h-3.5" /> License</span>
-            <span className="text-lg text-green-500 truncate">{info.license}</span>
+            <span className="text-lg text-[#2FBF8F] truncate">{info.license}</span>
           </div>
         )}
         {info.defaultBranch && (

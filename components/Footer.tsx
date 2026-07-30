@@ -5,11 +5,11 @@ export function Footer() {
   return (
     <footer className="border-t border-border/50 bg-background py-12">
       <div className="container mx-auto px-4 max-w-7xl flex flex-col md:flex-row justify-between items-center gap-6">
-        <div className="flex items-center gap-2">
-          <div className="w-6 h-6 rounded bg-gradient-to-br from-indigo-500 to-pink-500 flex items-center justify-center text-white font-bold text-xs">
+        <div className="flex items-center gap-2.5">
+          <div className="w-6 h-6 rounded bg-[#171D28] border border-[#2FBF8F]/30 flex items-center justify-center text-[#2FBF8F] font-bold text-xs">
             R
           </div>
-          <span className="font-bold tracking-tight">RepoLens AI</span>
+          <span className="font-bold tracking-tight text-[#F8FAFC]">RepoLens AI</span>
         </div>
 
         <p className="text-sm text-muted-foreground text-center md:text-left">

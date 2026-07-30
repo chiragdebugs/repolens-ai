@@ -6,7 +6,7 @@ export function DependencyGrid({ dependencies }: { dependencies: { name: string;
   return (
     <div className="glass rounded-2xl p-6 border border-border/50 shadow-sm h-full">
       <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
-        <Package2 className="w-5 h-5 text-indigo-500" />
+        <Package2 className="w-5 h-5 text-[#2FBF8F]" />
         Core Dependencies
       </h3>
       <div className="grid sm:grid-cols-2 gap-3">

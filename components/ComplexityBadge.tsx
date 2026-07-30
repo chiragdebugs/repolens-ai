@@ -6,34 +6,34 @@ interface ComplexityProps {
 }
 
 export function ComplexityBadge({ level, explanation }: ComplexityProps) {
-  let color = "text-indigo-500";
-  let bg = "bg-indigo-500/10";
-  let border = "border-indigo-500/20";
+  let color = "text-[#5B8CFF]";
+  let bg = "bg-[#5B8CFF]/10";
+  let border = "border-[#5B8CFF]/20";
   let Icon = Layers;
 
   switch (level) {
     case "Beginner":
-      color = "text-green-500";
-      bg = "bg-green-500/10";
-      border = "border-green-500/20";
+      color = "text-[#2FBF8F]";
+      bg = "bg-[#2FBF8F]/10";
+      border = "border-[#2FBF8F]/20";
       Icon = Zap;
       break;
     case "Intermediate":
-      color = "text-blue-500";
-      bg = "bg-blue-500/10";
-      border = "border-blue-500/20";
+      color = "text-[#5B8CFF]";
+      bg = "bg-[#5B8CFF]/10";
+      border = "border-[#5B8CFF]/20";
       Icon = Layers;
       break;
     case "Advanced":
-      color = "text-amber-500";
-      bg = "bg-amber-500/10";
-      border = "border-amber-500/20";
+      color = "text-[#A5B0C5]";
+      bg = "bg-[#A5B0C5]/10";
+      border = "border-[#A5B0C5]/20";
       Icon = BrainCircuit;
       break;
     case "Enterprise":
-      color = "text-pink-500";
-      bg = "bg-pink-500/10";
-      border = "border-pink-500/20";
+      color = "text-[#818CF8]";
+      bg = "bg-[#818CF8]/10";
+      border = "border-[#818CF8]/20";
       Icon = Building2;
       break;
   }
