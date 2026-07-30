@@ -17,7 +17,7 @@ function ReportContent() {
   const [error, setError] = useState<string | null>(null);
   
   // For fallback if KV is not enabled
-  const [fallbackData, setFallbackData] = useState<any>(null);
+  const [fallbackData, setFallbackData] = useState<{ info: import('@/lib/types').RepoInfo; report: import('@/lib/types').ReportContent } | null>(null);
 
   useEffect(() => {
     if (!url) return;
@@ -51,9 +51,9 @@ function ReportContent() {
             setIsLoading(false);
           }
         }
-      } catch (err: any) {
+      } catch (err: unknown) {
         if (isMounted) {
-          setError(err.message || "Something went wrong.");
+          setError(err instanceof Error ? err.message : "Something went wrong.");
           setIsLoading(false);
         }
       }

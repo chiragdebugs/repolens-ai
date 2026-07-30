@@ -55,10 +55,10 @@ export async function POST(req: Request) {
         report,
       });
     }
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("Analysis API Error:", error);
     
-    let errorMessage = error.message || "An unexpected error occurred during analysis.";
+    let errorMessage = error instanceof Error ? error.message : "An unexpected error occurred during analysis.";
     
     // Parse ugly JSON strings thrown by @google/genai
     if (errorMessage.includes("{") && errorMessage.includes("}")) {
@@ -67,12 +67,12 @@ export async function POST(req: Request) {
         if (parsedError?.error?.message) {
           errorMessage = parsedError.error.message;
         }
-      } catch (e) {
+      } catch {
         // Not valid JSON, keep original message
       }
     }
 
-    if (error.status === 404 || errorMessage === "Not Found") {
+    if ((error as { status?: number })?.status === 404 || errorMessage === "Not Found") {
       errorMessage = "Repository not found. If this is a private repository, ensure you have set a valid GITHUB_TOKEN in your environment variables with access to this repo.";
     } else if (errorMessage.includes("429") || errorMessage.includes("RESOURCE_EXHAUSTED") || errorMessage.includes("quota")) {
       errorMessage = "AI rate limit exceeded. Please wait a minute and try again. If this persists, you may have exhausted your Gemini API free tier limits.";
@@ -80,7 +80,7 @@ export async function POST(req: Request) {
 
     return NextResponse.json(
       { error: errorMessage },
-      { status: error.status === 404 ? 404 : 500 }
+      { status: (error as { status?: number })?.status === 404 ? 404 : 500 }
     );
   }
 }

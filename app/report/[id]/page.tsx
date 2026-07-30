@@ -17,8 +17,8 @@ export async function generateMetadata({ params }: PageProps) {
   }
 
   return {
-    title: `${data.info.owner}/${data.info.name} - RepoLens AI Analysis`,
-    description: `AI generated architecture and complexity report for ${data.info.owner}/${data.info.name}.`,
+    title: `${data.info.owner}/${data.info.repo} - RepoLens AI Analysis`,
+    description: `AI generated architecture and complexity report for ${data.info.owner}/${data.info.repo}.`,
   };
 }
 

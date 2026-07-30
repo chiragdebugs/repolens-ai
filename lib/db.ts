@@ -1,18 +1,5 @@
 import { kv } from "@vercel/kv";
-import { ReportContent } from "./types";
-
-export interface RepoInfo {
-  name: string;
-  owner: string;
-  description: string;
-  stargazers_count: number;
-  forks_count: number;
-  watchers_count: number;
-  open_issues_count: number;
-  default_branch: string;
-  updated_at: string;
-  private: boolean;
-}
+import { ReportContent, RepoInfo } from "./types";
 
 export interface ReportData {
   id: string;

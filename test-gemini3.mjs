@@ -6,7 +6,7 @@ const ai = new GoogleGenAI({
 
 async function main() {
   try {
-    const response = await ai.models.generateContent({
+    await ai.models.generateContent({
       model: "gemini-2.0-flash",
       contents: "Hello",
     });

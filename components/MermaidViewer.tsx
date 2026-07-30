@@ -34,7 +34,7 @@ export function MermaidViewer({ chart }: { chart: string }) {
         setError(false);
         const id = `mermaid-chart-${Math.round(Math.random() * 100000)}`;
         // Pre-process the chart to remove any markdown backticks if they leaked
-        let cleanChart = chart.replace(/```mermaid/gi, "").replace(/```/g, "").trim();
+        const cleanChart = chart.replace(/```mermaid/gi, "").replace(/```/g, "").trim();
         
         const { svg: generatedSvg } = await mermaid.render(id, cleanChart);
         

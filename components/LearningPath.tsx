@@ -1,4 +1,4 @@
-import { Map, ArrowDown } from "lucide-react";
+import { Map } from "lucide-react";
 
 export function LearningPath({ path }: { path: { path: string; reason: string }[] }) {
   if (!path || path.length === 0) return null;

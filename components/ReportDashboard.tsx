@@ -13,8 +13,9 @@ import { InterviewQuestions } from "@/components/InterviewQuestions";
 import { ExportMenu } from "@/components/ExportMenu";
 import { MermaidViewer } from "@/components/MermaidViewer";
 import { motion } from "framer-motion";
+import { RepoInfo, ReportContent } from "@/lib/types";
 
-export function ReportDashboard({ data }: { data: any }) {
+export function ReportDashboard({ data }: { data: { info: RepoInfo; report: ReportContent } }) {
   if (!data) return null;
 
   const container = {

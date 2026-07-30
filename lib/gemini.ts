@@ -52,16 +52,16 @@ ${parsed.complexity?.explanation || ""}
 ${parsed.techStack?.map((t: string) => `- ${t}`).join("\n")}
 
 ## Key Dependencies
-${parsed.dependencies?.map((d: any) => `- **${d.name}**: ${d.usage}`).join("\n")}
+${parsed.dependencies?.map((d: { name: string; usage: string }) => `- **${d.name}**: ${d.usage}`).join("\n")}
 
 ## Folder Structure
 ${parsed.folderStructure}
 
 ## Learning Path
-${parsed.learningPath?.map((step: any, i: number) => `${i + 1}. **${step.path}** - ${step.reason}`).join("\n")}
+${parsed.learningPath?.map((step: { path: string; reason: string }, i: number) => `${i + 1}. **${step.path}** - ${step.reason}`).join("\n")}
 
 ## Important Files
-${parsed.importantFiles?.map((f: any) => `### \`${f.path}\`\n${f.description}`).join("\n\n")}
+${parsed.importantFiles?.map((f: { path: string; description: string }) => `### \`${f.path}\`\n${f.description}`).join("\n\n")}
 
 ## Architecture Diagram
 \`\`\`mermaid
@@ -89,7 +89,7 @@ ${parsed.improvements?.map((imp: string) => `- ${imp}`).join("\n")}
       improvements: parsed.improvements,
       rawMarkdown,
     };
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error(`Gemini API Error (Attempt ${attempt}/${MAX_RETRIES}):`, error);
     
     if (attempt < MAX_RETRIES) {
@@ -98,6 +98,6 @@ ${parsed.improvements?.map((imp: string) => `- ${imp}`).join("\n")}
       return generateArchitectureReport(prompt, attempt + 1);
     }
     
-    throw new Error(error.message || "Failed to generate report from AI after multiple attempts.");
+    throw new Error(error instanceof Error ? error.message : "Failed to generate report from AI after multiple attempts.");
   }
 }

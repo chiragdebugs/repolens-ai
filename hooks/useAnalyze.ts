@@ -36,9 +36,9 @@ export function useAnalyze(url: string | null) {
         if (isMounted) {
           setData(json);
         }
-      } catch (err: any) {
+      } catch (err: unknown) {
         if (isMounted) {
-          setError(err.message || "Something went wrong.");
+          setError(err instanceof Error ? err.message : "Something went wrong.");
         }
       } finally {
         if (isMounted) {
