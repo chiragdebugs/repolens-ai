@@ -1,5 +1,7 @@
 # RepoLens AI
 
+![RepoLens AI Preview](./public/images/hero.png)
+
 AI-powered GitHub repository intelligence platform that helps developers understand unfamiliar repositories through automated architecture analysis.
 
 ## Overview
