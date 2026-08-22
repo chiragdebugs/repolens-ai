@@ -91,6 +91,7 @@ export async function fetchRepoData(owner: string, repo: string): Promise<RepoDa
 
   // 4. Fetch tree
   let treeString = "";
+  let existingTreePaths = new Set<string>();
   try {
     const { data: branchData } = await octokit.repos.getBranch({ owner, repo, branch: repoData.default_branch });
     const commitSha = branchData.commit.sha;
@@ -102,21 +103,29 @@ export async function fetchRepoData(owner: string, repo: string): Promise<RepoDa
       recursive: "true",
     });
 
-    // Simplify tree for prompt
     const paths = treeData.tree
       .map(t => t.path)
-      .filter((p): p is string => Boolean(p))
+      .filter((p): p is string => Boolean(p));
+
+    existingTreePaths = new Set(paths);
+
+    // Simplify tree for prompt
+    const filteredPaths = paths
       .filter(p => !p.includes("node_modules/") && !p.includes(".git/") && !p.includes("dist/") && !p.includes("build/"))
       .slice(0, 1000); // Limit to prevent massive prompts
 
-    treeString = paths.join("\n");
+    treeString = filteredPaths.join("\n");
   } catch (e) {
     console.warn("Could not fetch tree", e);
   }
 
-  // 5. Fetch Config Files
+  // 5. Fetch Config Files (ONLY for files that actually exist in the tree)
   const configFiles: Record<string, string> = {};
-  for (const file of CONFIG_FILES) {
+  const filesToFetch = CONFIG_FILES.filter(file => 
+    existingTreePaths.size === 0 || existingTreePaths.has(file)
+  );
+
+  for (const file of filesToFetch) {
     try {
       const { data: fileData } = await octokit.repos.getContent({
         owner,

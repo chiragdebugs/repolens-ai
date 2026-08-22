@@ -24,11 +24,11 @@ export async function POST(req: Request) {
     const cachedId = await getCachedReportId(owner, repo);
     
     if (cachedId) {
-      console.log(`[Cache Hit] Serving ${owner}/${repo} from Vercel KV`);
+      console.log(`[Cache Hit] Serving ${owner}/${repo} from Cache`);
       return NextResponse.json({ id: cachedId });
     }
 
-    console.log(`[Cache Miss] Fetching ${owner}/${repo} from GitHub and analyzing with Gemini...`);
+    console.log(`[Cache Miss] Fetching ${owner}/${repo} from GitHub and analyzing with AI engine...`);
 
     // Fetch GitHub data
     const repoData = await fetchRepoData(owner, repo);
@@ -36,7 +36,7 @@ export async function POST(req: Request) {
     // Generate prompt
     const prompt = generatePrompt(repoData);
 
-    // Call Gemini
+    // Call AI Engine (with key rotation and multi-provider fallbacks)
     const report = await generateArchitectureReport(prompt);
 
     const newId = generateShortId();
@@ -75,7 +75,7 @@ export async function POST(req: Request) {
     if ((error as { status?: number })?.status === 404 || errorMessage === "Not Found") {
       errorMessage = "Repository not found. If this is a private repository, ensure you have set a valid GITHUB_TOKEN in your environment variables with access to this repo.";
     } else if (errorMessage.includes("429") || errorMessage.includes("RESOURCE_EXHAUSTED") || errorMessage.includes("quota")) {
-      errorMessage = "AI rate limit exceeded. Please wait a minute and try again. If this persists, you may have exhausted your Gemini API free tier limits.";
+      errorMessage = "AI rate limit exceeded. You can add additional free Gemini API keys (comma-separated in GEMINI_API_KEY) or set GROQ_API_KEY in your environment to prevent rate limits permanently.";
     }
 
     return NextResponse.json(

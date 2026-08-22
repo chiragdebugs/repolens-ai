@@ -7,7 +7,7 @@ const ai = new GoogleGenAI({
 async function main() {
   try {
     await ai.models.generateContent({
-      model: "gemini-2.0-flash",
+      model: "gemini-2.5-flash",
       contents: "Hello",
     });
     console.log("Success flash");
