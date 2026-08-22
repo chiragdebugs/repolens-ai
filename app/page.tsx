@@ -9,15 +9,14 @@ export default function Home() {
   return (
     <>
       <Navbar />
-      <main className="flex-1 aurora-gradient">
+      <main className="flex-1 bg-[#ECEDEE] dark:bg-[#171719]">
         <Hero />
         <TrustedBy />
-        <div className="bg-background">
-          <Features />
-          <HowItWorks />
-        </div>
+        <Features />
+        <HowItWorks />
       </main>
       <Footer />
     </>
   );
 }
+

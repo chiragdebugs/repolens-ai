@@ -8,13 +8,13 @@ mermaid.initialize({
   startOnLoad: false,
   theme: "base",
   themeVariables: {
-    fontFamily: "var(--font-sans)",
-    primaryColor: "#2FBF8F",
-    primaryTextColor: "#090B10",
-    primaryBorderColor: "#28A97E",
-    lineColor: "#2FBF8F",
-    secondaryColor: "#11161F",
-    tertiaryColor: "#171D28",
+    fontFamily: "var(--font-mono), monospace",
+    primaryColor: "#202024",
+    primaryTextColor: "#ECEDEE",
+    primaryBorderColor: "#2563EB",
+    lineColor: "#2563EB",
+    secondaryColor: "#171719",
+    tertiaryColor: "#202024",
   },
   securityLevel: "loose",
 });
@@ -33,7 +33,6 @@ export function MermaidViewer({ chart }: { chart: string }) {
       try {
         setError(false);
         const id = `mermaid-chart-${Math.round(Math.random() * 100000)}`;
-        // Pre-process the chart to remove any markdown backticks if they leaked
         const cleanChart = chart.replace(/```mermaid/gi, "").replace(/```/g, "").trim();
         
         const { svg: generatedSvg } = await mermaid.render(id, cleanChart);
@@ -56,7 +55,7 @@ export function MermaidViewer({ chart }: { chart: string }) {
 
   if (error) {
     return (
-      <div className="p-4 bg-red-500/10 text-red-500 border border-red-500/20 rounded-lg text-sm">
+      <div className="p-4 bg-[#D64545]/10 text-[#D64545] border border-[#D64545]/20 rounded-[16px] text-xs font-mono">
         Failed to render architecture diagram.
       </div>
     );
@@ -65,7 +64,7 @@ export function MermaidViewer({ chart }: { chart: string }) {
   if (!svg) {
     return (
       <div className="flex items-center justify-center h-48">
-        <Loader2 className="w-6 h-6 animate-spin text-muted-foreground" />
+        <Loader2 className="w-5 h-5 animate-spin text-[#777A80]" />
       </div>
     );
   }
@@ -73,8 +72,9 @@ export function MermaidViewer({ chart }: { chart: string }) {
   return (
     <div
       ref={containerRef}
-      className="w-full overflow-x-auto flex justify-center p-4 bg-card/30 rounded-xl border border-border/50"
+      className="w-full overflow-x-auto flex justify-center p-6 bg-[#202024] rounded-[20px] border border-white/[0.08] shadow-[0_1px_0_rgba(255,255,255,0.05)_inset]"
       dangerouslySetInnerHTML={{ __html: svg }}
     />
   );
 }
+

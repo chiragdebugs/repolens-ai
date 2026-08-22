@@ -51,7 +51,7 @@ function isRateLimitError(error: unknown): boolean {
 /**
  * Clean AI JSON responses (handling markdown backticks & leading/trailing noise)
  */
-function cleanJsonResponse(text: string): Record<string, any> {
+function cleanJsonResponse(text: string): Record<string, unknown> {
   let cleaned = text.trim();
   if (cleaned.startsWith("```json")) {
     cleaned = cleaned.replace(/^```json/i, "").replace(/```$/i, "").trim();
@@ -59,7 +59,6 @@ function cleanJsonResponse(text: string): Record<string, any> {
     cleaned = cleaned.replace(/^```/i, "").replace(/```$/i, "").trim();
   }
 
-  // Extract valid json bounds if extra text wraps the JSON
   const startIdx = cleaned.indexOf("{");
   const endIdx = cleaned.lastIndexOf("}");
   if (startIdx !== -1 && endIdx !== -1 && endIdx > startIdx) {
@@ -72,60 +71,63 @@ function cleanJsonResponse(text: string): Record<string, any> {
 /**
  * Build standard ReportContent from parsed JSON object
  */
-function formatReportData(parsed: any): ReportContent {
+function formatReportData(parsed: Record<string, unknown>): ReportContent {
+  const p = parsed as Partial<ReportContent>;
   const rawMarkdown = `
 # Architecture Report
 
 ## Project Summary
-${parsed.summary || "No summary provided."}
+${p.summary || "No summary provided."}
 
-## Health Score: ${parsed.healthScore ?? 80}/100
+## Health Score: ${p.healthScore ?? 80}/100
 
-## Complexity: ${parsed.complexity?.level || "Unknown"}
-${parsed.complexity?.explanation || ""}
+## Complexity: ${p.complexity?.level || "Unknown"}
+${p.complexity?.explanation || ""}
+
 
 ## Tech Stack
-${(parsed.techStack || []).map((t: string) => `- ${t}`).join("\n")}
+${(p.techStack || []).map((t: string) => `- ${t}`).join("\n")}
 
 ## Key Dependencies
-${(parsed.dependencies || []).map((d: { name: string; usage: string }) => `- **${d.name}**: ${d.usage}`).join("\n")}
+${(p.dependencies || []).map((d: { name: string; usage: string }) => `- **${d.name}**: ${d.usage}`).join("\n")}
 
 ## Folder Structure
-${parsed.folderStructure || ""}
+${p.folderStructure || ""}
 
 ## Learning Path
-${(parsed.learningPath || []).map((step: { path: string; reason: string }, i: number) => `${i + 1}. **${step.path}** - ${step.reason}`).join("\n")}
+${(p.learningPath || []).map((step: { path: string; reason: string }, i: number) => `${i + 1}. **${step.path}** - ${step.reason}`).join("\n")}
 
 ## Important Files
-${(parsed.importantFiles || []).map((f: { path: string; description: string }) => `### \`${f.path}\`\n${f.description}`).join("\n\n")}
+${(p.importantFiles || []).map((f: { path: string; description: string }) => `### \`${f.path}\`\n${f.description}`).join("\n\n")}
 
 ## Architecture Diagram
 \`\`\`mermaid
-${parsed.mermaidDiagram || ""}
+${p.mermaidDiagram || ""}
 \`\`\`
 
 ## Interview Questions
-${(parsed.interviewQuestions || []).map((q: string) => `- ${q}`).join("\n")}
+${(p.interviewQuestions || []).map((q: string) => `- ${q}`).join("\n")}
 
 ## Suggested Improvements
-${(parsed.improvements || []).map((imp: string) => `- ${imp}`).join("\n")}
+${(p.improvements || []).map((imp: string) => `- ${imp}`).join("\n")}
   `.trim();
 
   return {
-    summary: parsed.summary || "",
-    healthScore: parsed.healthScore ?? 80,
-    complexity: parsed.complexity || { level: "Medium", explanation: "" },
-    techStack: parsed.techStack || [],
-    dependencies: parsed.dependencies || [],
-    folderStructure: parsed.folderStructure || "",
-    learningPath: parsed.learningPath || [],
-    importantFiles: parsed.importantFiles || [],
-    mermaidDiagram: parsed.mermaidDiagram || "",
-    interviewQuestions: parsed.interviewQuestions || [],
-    improvements: parsed.improvements || [],
+    summary: p.summary || "",
+    healthScore: p.healthScore ?? 80,
+    complexity: p.complexity || { level: "Intermediate", explanation: "" },
+    techStack: p.techStack || [],
+    dependencies: p.dependencies || [],
+    folderStructure: p.folderStructure || "",
+    learningPath: p.learningPath || [],
+    importantFiles: p.importantFiles || [],
+    mermaidDiagram: p.mermaidDiagram || "",
+    interviewQuestions: p.interviewQuestions || [],
+    improvements: p.improvements || [],
     rawMarkdown,
   };
 }
+
 
 /**
  * Fallback Provider: Groq API (Free Tier: 14,400 RPD / 30 RPM)

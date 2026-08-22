@@ -16,7 +16,6 @@ export function RepoInput() {
     if (!url.trim()) return;
 
     setIsLoading(true);
-    // Simulate navigation/processing delay for visual feedback before route change
     setTimeout(() => {
       router.push(`/report?url=${encodeURIComponent(url)}`);
     }, 400);
@@ -28,14 +27,11 @@ export function RepoInput() {
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.2, duration: 0.5 }}
       onSubmit={handleSubmit}
-      className="relative w-full max-w-2xl mx-auto flex items-center mt-8"
+      className="relative w-full max-w-2xl mx-auto lg:mx-0 flex items-center mt-6"
     >
-      {/* Subtle ambient glow */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[#2FBF8F]/10 to-[#5B8CFF]/10 blur-xl rounded-full -z-10 transition-opacity duration-500 opacity-70" />
-      
-      <div className="relative flex items-center w-full p-2 bg-card/90 backdrop-blur-xl rounded-full border border-border hover:border-foreground/20 transition-all duration-200 shadow-xl">
-        <div className="pl-4 pr-3 text-muted-foreground flex items-center justify-center">
-          <GithubIcon className="w-5 h-5" />
+      <div className="relative flex items-center w-full p-2 bg-[#FFFFFF] dark:bg-[#202024] rounded-[24px] border border-black/[0.09] dark:border-white/[0.09] shadow-[0_1px_0_rgba(255,255,255,0.9)_inset,0_4px_20px_-4px_rgba(0,0,0,0.05)] focus-within:border-[#2563EB] dark:focus-within:border-[#2563EB] transition-all duration-200">
+        <div className="pl-4 pr-3 text-[#777A80] flex items-center justify-center shrink-0">
+          <GithubIcon className="w-5 h-5 text-[#55575C] dark:text-[#777A80]" />
         </div>
         <input
           type="url"
@@ -43,18 +39,18 @@ export function RepoInput() {
           placeholder="https://github.com/facebook/react"
           value={url}
           onChange={(e) => setUrl(e.target.value)}
-          className="flex-1 bg-transparent border-none outline-none text-foreground placeholder:text-muted-foreground/60 text-sm md:text-base min-w-0 font-normal"
+          className="flex-1 bg-transparent border-none outline-none text-[#232427] dark:text-[#ECEDEE] placeholder:text-[#777A80]/70 text-sm md:text-base font-normal tracking-tight min-w-0"
         />
         <button
           type="submit"
           disabled={isLoading || !url}
-          className="ml-2 bg-[#2FBF8F] hover:bg-[#28A97E] text-white dark:text-[#090B10] px-6 py-3 rounded-full font-semibold text-sm transition-all duration-200 disabled:opacity-40 disabled:hover:bg-[#2FBF8F] flex items-center gap-2 group whitespace-nowrap shadow-none border border-[#2FBF8F]/20"
+          className="ml-2 bg-[#2563EB] hover:bg-[#1D4ED8] text-white px-6 py-3 rounded-[18px] font-medium text-sm transition-all duration-200 disabled:opacity-40 disabled:hover:bg-[#2563EB] flex items-center gap-2 shrink-0 shadow-sm active:scale-95"
         >
           {isLoading ? (
             <Loader2 className="w-4 h-4 animate-spin" />
           ) : (
             <>
-              Explain
+              Analyze Repository
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
             </>
           )}
@@ -63,4 +59,5 @@ export function RepoInput() {
     </motion.form>
   );
 }
+
 

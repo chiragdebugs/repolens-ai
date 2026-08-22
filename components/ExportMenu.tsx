@@ -41,39 +41,40 @@ export function ExportMenu({ data }: ExportMenuProps) {
   };
 
   return (
-    <div className="flex gap-2">
+    <div className="flex items-center gap-2">
       <button
         onClick={handleShare}
-        className="p-2 rounded-lg bg-foreground text-background transition-all hover:scale-105 active:scale-95 shadow-sm flex items-center gap-2 text-xs font-medium print:hidden"
+        className="px-3 py-2 rounded-[14px] bg-[#2563EB] hover:bg-[#1D4ED8] text-white transition-all shadow-sm active:scale-95 flex items-center gap-1.5 text-xs font-medium print:hidden"
         title="Share Report"
       >
-        <LinkIcon className="w-4 h-4" />
+        <LinkIcon className="w-3.5 h-3.5" strokeWidth={1.5} />
         <span className="hidden sm:inline">Share</span>
       </button>
       <button
         onClick={handleDownloadMarkdown}
-        className="p-2 rounded-lg hover:bg-muted transition-colors border border-border flex items-center gap-2 text-xs font-medium"
+        className="px-3 py-2 rounded-[14px] bg-[#FFFFFF] dark:bg-[#202024] hover:bg-[#F4F5F5] dark:hover:bg-[#171719] text-[#232427] dark:text-[#ECEDEE] transition-colors border border-black/[0.08] dark:border-white/[0.08] flex items-center gap-1.5 text-xs font-mono font-medium shadow-[0_1px_0_rgba(255,255,255,0.9)_inset]"
         title="Download Markdown"
       >
-        <FileText className="w-4 h-4 text-muted-foreground" />
+        <FileText className="w-3.5 h-3.5 text-[#777A80]" strokeWidth={1.5} />
         <span className="hidden sm:inline">MD</span>
       </button>
       <button
         onClick={handleDownloadJSON}
-        className="p-2 rounded-lg hover:bg-muted transition-colors border border-border flex items-center gap-2 text-xs font-medium"
+        className="px-3 py-2 rounded-[14px] bg-[#FFFFFF] dark:bg-[#202024] hover:bg-[#F4F5F5] dark:hover:bg-[#171719] text-[#232427] dark:text-[#ECEDEE] transition-colors border border-black/[0.08] dark:border-white/[0.08] flex items-center gap-1.5 text-xs font-mono font-medium shadow-[0_1px_0_rgba(255,255,255,0.9)_inset]"
         title="Download JSON"
       >
-        <FileJson className="w-4 h-4 text-muted-foreground" />
+        <FileJson className="w-3.5 h-3.5 text-[#777A80]" strokeWidth={1.5} />
         <span className="hidden sm:inline">JSON</span>
       </button>
       <button
         onClick={handleDownloadPDF}
-        className="p-2 rounded-lg hover:bg-muted transition-colors border border-border flex items-center gap-2 text-xs font-medium print:hidden"
+        className="px-3 py-2 rounded-[14px] bg-[#FFFFFF] dark:bg-[#202024] hover:bg-[#F4F5F5] dark:hover:bg-[#171719] text-[#232427] dark:text-[#ECEDEE] transition-colors border border-black/[0.08] dark:border-white/[0.08] flex items-center gap-1.5 text-xs font-mono font-medium print:hidden shadow-[0_1px_0_rgba(255,255,255,0.9)_inset]"
         title="Download PDF / Print"
       >
-        <Download className="w-4 h-4 text-muted-foreground" />
+        <Download className="w-3.5 h-3.5 text-[#777A80]" strokeWidth={1.5} />
         <span className="hidden sm:inline">PDF</span>
       </button>
     </div>
   );
 }
+

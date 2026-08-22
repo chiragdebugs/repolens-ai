@@ -69,14 +69,13 @@ function ReportContent() {
   if (isLoading || (!error && !fallbackData && url)) {
     return (
       <div className="flex flex-col items-center justify-center min-h-[70vh] gap-4">
-        <div className="w-16 h-16 relative">
-          <div className="absolute inset-0 rounded-full border-t-2 border-indigo-500 animate-spin" />
-          <div className="absolute inset-2 rounded-full border-r-2 border-pink-500 animate-spin flex items-center justify-center">
-            <Loader2 className="w-6 h-6 text-foreground animate-spin" />
-          </div>
+        <div className="w-16 h-16 relative flex items-center justify-center bg-[#FFFFFF] dark:bg-[#202024] rounded-[24px] border border-black/[0.08] dark:border-white/[0.08] shadow-[0_1px_0_rgba(255,255,255,0.9)_inset]">
+          <Loader2 className="w-7 h-7 text-[#2563EB] animate-spin" />
         </div>
-        <p className="text-lg font-medium animate-pulse">Analyzing Repository...</p>
-        <p className="text-sm text-muted-foreground">This may take up to 30 seconds.</p>
+        <div className="text-center space-y-1">
+          <p className="text-base font-bold text-[#232427] dark:text-[#ECEDEE] tracking-tight">Analyzing Repository...</p>
+          <p className="text-xs font-mono text-[#777A80]">Fetching AST trees, configs, and dependencies with Gemini AI</p>
+        </div>
       </div>
     );
   }
@@ -84,12 +83,12 @@ function ReportContent() {
   if (error || !url) {
     return (
       <div className="flex flex-col items-center justify-center min-h-[70vh] gap-4 text-center px-4">
-        <div className="w-16 h-16 rounded-full bg-red-500/10 flex items-center justify-center">
-          <AlertCircle className="w-8 h-8 text-red-500" />
+        <div className="w-14 h-14 rounded-[20px] bg-[#D64545]/10 border border-[#D64545]/20 flex items-center justify-center">
+          <AlertCircle className="w-6 h-6 text-[#D64545]" />
         </div>
-        <h2 className="text-2xl font-bold text-red-500">Analysis Failed</h2>
-        <p className="text-muted-foreground max-w-md">{error || "No URL provided."}</p>
-        <Link href="/" className="mt-4 bg-foreground text-background px-6 py-2 rounded-full font-medium text-sm transition-all hover:scale-105 active:scale-95">
+        <h2 className="text-xl font-bold text-[#D64545]">Analysis Failed</h2>
+        <p className="text-sm text-[#55575C] dark:text-[#777A80] max-w-md">{error || "No URL provided."}</p>
+        <Link href="/" className="mt-4 bg-[#2563EB] hover:bg-[#1D4ED8] text-white px-6 py-2.5 rounded-full font-medium text-xs transition-all shadow-sm active:scale-95">
           Try Another URL
         </Link>
       </div>
@@ -107,8 +106,8 @@ export default function ReportGenerationPage() {
   return (
     <>
       <Navbar />
-      <main className="min-h-screen pt-16 bg-muted/20">
-        <Suspense fallback={<div className="h-screen w-full flex items-center justify-center"><Loader2 className="w-8 h-8 animate-spin" /></div>}>
+      <main className="min-h-screen pt-16 bg-[#ECEDEE] dark:bg-[#171719]">
+        <Suspense fallback={<div className="h-screen w-full flex items-center justify-center bg-[#ECEDEE] dark:bg-[#171719]"><Loader2 className="w-6 h-6 animate-spin text-[#777A80]" /></div>}>
           <ReportContent />
         </Suspense>
       </main>
@@ -116,3 +115,4 @@ export default function ReportGenerationPage() {
     </>
   );
 }
+

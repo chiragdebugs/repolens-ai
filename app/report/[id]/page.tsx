@@ -33,10 +33,11 @@ export default async function SharedReportPage({ params }: PageProps) {
   return (
     <>
       <Navbar />
-      <main className="min-h-screen pt-16 bg-muted/20">
+      <main className="min-h-screen pt-16 bg-[#ECEDEE] dark:bg-[#171719]">
         <ReportDashboard data={data} />
       </main>
       <Footer />
     </>
   );
 }
+
